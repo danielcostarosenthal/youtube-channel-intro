@@ -1,0 +1,249 @@
+@charset "UTF-8";
+
+/*? General resets and styling of the body */
+body {
+	font-family: Bahnschrift, sans-serif;
+	margin: 0;
+	color: white;
+	background-color: hsl(210, 50%, 40%);
+	user-select: none;
+	transition: opacity 1s;
+}
+
+/*? Styling the container */
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	position: relative;
+}
+
+/*? Styling the cube section */
+.cube {
+	width: 80px;
+	height: 80px;
+	background-color: crimson;
+	color: white;
+	position: fixed;
+	transform: translateY(-100vh) scale(0);
+	z-index: 2;
+	animation: enter 1.25s 1s forwards, rotate 1.25s 1.75s forwards;
+}
+
+/*? Cube's animations */
+@keyframes enter {
+	50% {
+		transform: translateY(-5vh) scale(1);
+	}
+
+	100% {
+		transform: translateY(-5vh) scale(1);
+	}
+}
+
+@keyframes rotate {
+	0% {
+		transform: translateY(-5vh) rotateZ(0deg);
+	}
+
+	50% {
+		transform: translateY(-5vh) translateX(0vw);
+	}
+
+	100% {
+		transform: translateY(6vh) translateX(0vw) rotateZ(-720deg);
+	}
+}
+
+@keyframes remove-cube {
+	0% {
+		transform: translateY(12vh);
+	}
+
+	80% {
+		transform: translateY(7vh);
+	}
+
+	100% {
+		transform: translateY(-100vh);
+	}
+}
+
+/*? Styling the cube's p element */
+.cube p {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	width: 100%;
+	font-size: 1.75rem;
+	font-weight: bold;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/*? Styling the shadow beneath the cube */
+.shadow {
+	height: 0.25rem;
+	width: 90%;
+	left: 50%;
+	transform: translate(-50%);
+	background: radial-gradient(hsl(0, 0%, 25%, 0.25), hsl(210, 50%, 40%));
+	position: fixed;
+	bottom: -4rem;
+	border-radius: 1rem;
+	opacity: 0;
+	animation: shadow 2s 2.75s forwards;
+}
+
+/*? Shadow's animation */
+@keyframes shadow {
+	100% {
+		opacity: 1;
+	}
+}
+
+/*? Styling the content section */
+.content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	margin-top: -10rem;
+	position: fixed;
+}
+
+/*? Styling the content's h1 element */
+.content h1 {
+	font-size: 2.5rem;
+	font-weight: bold;
+	margin: 0;
+	margin-bottom: 0.5rem;
+	transform: translateX(-100vw);
+	animation: translate 1s 2s forwards;
+	position: relative;
+}
+
+/*? H1 animation */
+@keyframes translate {
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes remove-h1 {
+	0% {
+		transform: translateY(0);
+	}
+
+	50%,
+	100% {
+		transform: translateY(-100vh);
+	}
+}
+
+/*? Styling the content's p element */
+.content p {
+	font-size: 0.75rem;
+	font-weight: 100;
+	width: 35ch;
+	margin: 0 auto;
+	opacity: 0;
+	animation: opacity 2s 2.5s forwards;
+}
+
+/*? P animation */
+@keyframes opacity {
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes remove-p {
+	0% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(-100vh);
+	}
+}
+
+/*? Styling the content's span element and its border */
+.content .border {
+	position: absolute;
+	top: 15%;
+	bottom: 25%;
+	margin-left: -0.35rem;
+}
+.content .border-left {
+	border-left: 0.1rem solid crimson;
+}
+
+.content .border-right {
+	border-right: 0.1rem solid crimson;
+}
+
+/*? Media queries for above 600px */
+@media screen and (min-width: 600px) {
+	/*? Styling the cube and its elements */
+	.cube {
+		width: 100px;
+		height: 100px;
+		background-color: crimson;
+		color: white;
+		position: fixed;
+		transform: translateY(-100vh) scale(0);
+		z-index: 2;
+		animation: enter 1.25s 1s forwards, rotate 1.25s 1.75s forwards;
+	}
+
+	.cube p {
+		font-size: 2.25rem;
+		font-weight: bold;
+	}
+
+	/*? Styling the content's elements */
+	.content h1 {
+		font-size: 5rem;
+	}
+
+	.content p {
+		font-size: 1.25rem;
+	}
+
+	/*? Styling the content's span element and its border */
+	.content .border {
+		position: absolute;
+		top: 15%;
+		bottom: 25%;
+		margin-left: -0.75rem;
+	}
+	.content .border-left {
+		border-left: 0.25rem solid crimson;
+	}
+
+	.content .border-right {
+		border-right: 0.25rem solid crimson;
+	}
+
+	@keyframes rotate {
+		0% {
+			transform: translateY(-5vh) rotateZ(0deg);
+		}
+
+		50% {
+			transform: translateY(-5vh) translateX(0vw);
+		}
+
+		100% {
+			transform: translateY(14vh) translateX(0vw) rotateZ(-720deg);
+		}
+	}
+}
