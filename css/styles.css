@@ -129,6 +129,10 @@ body {
 	position: relative;
 }
 
+.content h1 + .content h1 {
+	margin-bottom: 10px;
+}
+
 /*? H1 animation */
 @keyframes translate {
 	100% {
